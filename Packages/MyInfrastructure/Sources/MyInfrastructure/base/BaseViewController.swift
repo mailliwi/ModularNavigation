@@ -4,12 +4,12 @@
 
 import UIKit
 
-public class BaseViewController: UIViewController {
+open class BaseViewController: UIViewController {
     
     public var userInfo: [String: Any] = [:]
     public var navigationHandler = NavigationHandler()
     
-    override public func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
     }
 
