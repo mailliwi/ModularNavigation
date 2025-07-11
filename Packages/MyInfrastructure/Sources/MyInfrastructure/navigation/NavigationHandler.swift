@@ -33,7 +33,7 @@ public class NavigationHandler {
 extension NavigationHandler {
     
     public func navigateToFirstViewController() {
-        let firstViewController = MainAssembler.resolveFirstViewController()
+        let firstViewController = MainAssembler.shared.resolveFirstViewController()
         let userInfo = [
             "someKey": "Some value",
             "someOtherKey": "Some other value"

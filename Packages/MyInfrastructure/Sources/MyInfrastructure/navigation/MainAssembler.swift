@@ -5,11 +5,12 @@
 public final class MainAssembler: @unchecked Sendable {
     
     public static let shared = MainAssembler()
+    public let navigationHandler: NavigationHandler = NavigationHandler()
     
     public var keychain: Keychain
     public var networkService: NetworkService
     
-    public init() {
+    private init() {
         let keychainInstance = Keychain()
         self.keychain = keychainInstance
         self.networkService = NetworkService(keychain: keychainInstance)
