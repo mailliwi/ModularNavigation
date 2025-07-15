@@ -2,6 +2,13 @@
 //  MainAssembler.swift
 //  MyInfrastructure
 
+/// ⚠️
+/// This class is the original implementation.
+/// It does not work, because this module has no access or knowledge about the VCs and presenters it's trying to assemble together.
+/// It has been left in this project as a way to visualize/understand what the issue at hand is.
+/// The rewrite attempt is in `MainAssembler2`
+/// ⚠️
+
 public final class MainAssembler: @unchecked Sendable {
     
     public static let shared = MainAssembler()

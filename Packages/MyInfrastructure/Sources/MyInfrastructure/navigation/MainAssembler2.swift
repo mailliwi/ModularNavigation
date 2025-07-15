@@ -7,11 +7,17 @@ import UIKit
 
 public final class MainAssembler2: @unchecked Sendable {
     
+    // MARK: - Properties
+    //
+    
     public static let shared = MainAssembler2()
     
     public var keychain: Keychain
     public var networkService: NetworkService
     public let navigationHandler: NavigationHandler
+    
+    // MARK: - Initializers
+    //
     
     private init() {
         let keychain = Keychain()
@@ -25,8 +31,9 @@ public final class MainAssembler2: @unchecked Sendable {
 @MainActor
 extension MainAssembler2 {
     
-    public func initFirstViewController(with data: FirstVCData) {
-        navigationHandler.navigateToFirstViewController(with: data)
-    }
+    // MARK: - Navigation
+    //
+    
+    
     
 }

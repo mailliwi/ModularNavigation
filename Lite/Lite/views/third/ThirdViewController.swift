@@ -53,26 +53,21 @@ final class ThirdViewController: BaseViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .systemYellow
+        view.backgroundColor = .systemPink
         
-        let label = UILabel()
-        label.text = "Third View Controller"
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(label)
+        let label = setupLabel()
+        let presenterButton = setupThirdPresenterButton()
+        let vc1NavigationButton = setupVC1NavigationButton()
+        let vc2NavigationButton = setupVC2NavigationButton()
         
-        let button = UIButton(type: .system)
-        button.setTitle("Exec logic 3 from presenter", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        button.addTarget(
-            self,
-            action: #selector(didTapButton),
-            for: .touchUpInside
+        let stackView = UIStackView(
+            arrangedSubviews: [
+                label,
+                presenterButton,
+                vc1NavigationButton,
+                vc2NavigationButton
+            ]
         )
-        
-        let stackView = UIStackView(arrangedSubviews: [label, button])
         stackView.axis = .vertical
         stackView.spacing = 20
         stackView.alignment = .center
@@ -85,11 +80,82 @@ final class ThirdViewController: BaseViewController {
         ])
     }
     
-    @objc private func didTapButton() {
+    // MARK: - Label
+    //
+    
+    private func setupLabel() -> UILabel {
+        let label = UILabel()
+        label.text = "Third View Controller"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        
+        return label
+    }
+    
+    // MARK: - Presenter Button
+    //
+    
+    private func setupThirdPresenterButton() -> UIButton {
+        let button = UIButton(type: .system)
+        button.setTitle("Execute Third Presenter Logic", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        button.addTarget(
+            self,
+            action: #selector(didTapThirdPresenterButton),
+            for: .touchUpInside
+        )
+        
+        return button
+    }
+    
+    @objc private func didTapThirdPresenterButton() {
         presenter?.someNetworkingLogic3(
             with: thirdVCData?.title ?? "",
             and: thirdVCData?.code ?? 0
         )
+    }
+    
+    // MARK: - Navigate to VC1 Button
+    //
+    
+    private func setupVC1NavigationButton() -> UIButton {
+        let button = UIButton(type: .system)
+        button.setTitle("Navigate to VC1", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        button.addTarget(
+            self,
+            action: #selector(didTapNavigateToVC1Button),
+            for: .touchUpInside
+        )
+        
+        return button
+    }
+    
+    @objc private func didTapNavigateToVC1Button() {
+        // figure out what to do here
+    }
+    
+    // MARK: - Navigate to VC2 Button
+    //
+    
+    private func setupVC2NavigationButton() -> UIButton {
+        let button = UIButton(type: .system)
+        button.setTitle("Navigate to VC2", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        button.addTarget(
+            self,
+            action: #selector(didTapNavigateToVC2Button),
+            for: .touchUpInside
+        )
+        
+        return button
+    }
+    
+    @objc private func didTapNavigateToVC2Button() {
+        // figure out what to do here
     }
     
 }
