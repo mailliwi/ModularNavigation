@@ -5,7 +5,6 @@
 public final class MainAssembler: @unchecked Sendable {
     
     public static let shared = MainAssembler()
-    public let navigationHandler: NavigationHandler = NavigationHandler()
     
     public var keychain: Keychain
     public var networkService: NetworkService

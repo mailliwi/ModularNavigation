@@ -1,4 +1,5 @@
+//
 //  BaseView.swift
-//  ISGInfrastructure
+//  MyInfrastructure
 
 public protocol BaseView: AnyObject { }

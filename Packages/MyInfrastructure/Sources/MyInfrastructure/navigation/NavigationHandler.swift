@@ -2,6 +2,7 @@
 //  NavigationHandler.swift
 //  MyInfrastructure
 
+import MyBase
 import UIKit
 
 @MainActor
@@ -32,16 +33,8 @@ public class NavigationHandler {
 
 extension NavigationHandler {
     
-    public func navigateToFirstViewController() {
+    public func navigateToFirstViewController(with data: FirstVCData) {
         let firstViewController = MainAssembler.shared.resolveFirstViewController()
-        let userInfo = [
-            "someKey": "Some value",
-            "someOtherKey": "Some other value"
-        ] as [String: Any]
-        
-        // issue: no navigationController to use.
-        // In our project, it all stems from the Home screen,
-        // where there is a navController.
         push(
             from: navigationController,
             to: firstViewController,

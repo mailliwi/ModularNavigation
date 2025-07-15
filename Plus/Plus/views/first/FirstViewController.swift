@@ -8,14 +8,51 @@ import UIKit
 
 final class FirstViewController: BaseViewController {
     
-    private var presenter: FirstPresenter?
+    // MARK: - Properties
+    //
+    
+    private let presenter: FirstPresenter?
+    private let firstVCData: FirstVCData?
+    
+    // MARK: - Initializers
+    //
+    
+    public init(
+        presenter: FirstPresenter?,
+        firstVCData: FirstVCData?
+    ) {
+        self.presenter = presenter
+        self.firstVCData = firstVCData
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    public required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Lifecycle
+    //
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViewController()
+        setupData()
+        setupUI()
     }
     
-    private func setupViewController() {
+    // MARK: - Functions
+    //
+    
+    private func setupData() {
+        if let _ = firstVCData?.title {
+            // do something with title
+        }
+        
+        if let _ = firstVCData?.code {
+            // do something with code
+        }
+    }
+    
+    private func setupUI() {
         view.backgroundColor = .systemBlue
         
         let label = UILabel()
@@ -47,7 +84,10 @@ final class FirstViewController: BaseViewController {
     }
     
     @objc private func didTapButton() {
-        presenter?.someNetworkingLogic1()
+        presenter?.someNetworkingLogic1(
+            with: firstVCData?.title ?? "",
+            and: firstVCData?.code ?? 0
+        )
     }
     
 }

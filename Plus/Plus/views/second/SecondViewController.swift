@@ -8,14 +8,51 @@ import UIKit
 
 final class SecondViewController: BaseViewController {
     
-    private var presenter: SecondPresenter?
+    // MARK: - Properties
+    //
+    
+    private let presenter: SecondPresenter?
+    private let secondVCData: SecondVCData?
+    
+    // MARK: - Initializers
+    //
+    
+    public init(
+        presenter: SecondPresenter?,
+        secondVCData: SecondVCData?
+    ) {
+        self.presenter = presenter
+        self.secondVCData = secondVCData
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    public required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Lifecycle
+    //
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViewController()
+        setupData()
+        setupUI()
     }
     
-    private func setupViewController() {
+    // MARK: - Functions
+    //
+    
+    private func setupData() {
+        if let _ = secondVCData?.title {
+            // do something with title
+        }
+        
+        if let _ = secondVCData?.code {
+            // do something with code
+        }
+    }
+    
+    private func setupUI() {
         view.backgroundColor = .systemPink
         
         let label = UILabel()
@@ -49,7 +86,10 @@ final class SecondViewController: BaseViewController {
     }
     
     @objc private func didTapButton() {
-        presenter?.someNetworkingLogic2()
+        presenter?.someNetworkingLogic2(
+            with: secondVCData?.title ?? "",
+            and: secondVCData?.code ?? 0
+        )
     }
     
 }

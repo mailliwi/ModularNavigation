@@ -8,14 +8,51 @@ import UIKit
 
 final class ThirdViewController: BaseViewController {
     
-    private var presenter: ThirdPresenter?
+    // MARK: - Properties
+    //
+    
+    private let presenter: ThirdPresenter?
+    private let thirdVCData: ThirdVCData?
+    
+    // MARK: - Initializers
+    //
+    
+    public init(
+        presenter: ThirdPresenter?,
+        thirdVCData: ThirdVCData?
+    ) {
+        self.presenter = presenter
+        self.thirdVCData = thirdVCData
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    public required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Lifecycle
+    //
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViewController()
+        setupData()
+        setupUI()
     }
     
-    private func setupViewController() {
+    // MARK: - Functions
+    //
+    
+    private func setupData() {
+        if let _ = thirdVCData?.title {
+            // do something with title
+        }
+        
+        if let _ = thirdVCData?.code {
+            // do something with code
+        }
+    }
+    
+    private func setupUI() {
         view.backgroundColor = .systemYellow
         
         let label = UILabel()
@@ -49,7 +86,10 @@ final class ThirdViewController: BaseViewController {
     }
     
     @objc private func didTapButton() {
-        presenter?.someNetworkingLogic3()
+        presenter?.someNetworkingLogic3(
+            with: thirdVCData?.title ?? "",
+            and: thirdVCData?.code ?? 0
+        )
     }
     
 }

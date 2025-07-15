@@ -15,7 +15,8 @@ public final class FirstPresenter: BasePresenter {
         self.repository = repository
     }
     
-    public func someNetworkingLogic1() {
+    public func someNetworkingLogic1(with string: String, and code: Int) {
+        // not using arguments here because this is an MRE but could if needed
         repository.fetchSomething1()
     }
     

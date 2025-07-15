@@ -1,10 +1,10 @@
 //
-//  MyDataModel.swift
+//  FirstVCData.swift
 //  MyBase
 
 import Foundation
 
-public struct MyDataModel: Sendable {
+public struct FirstVCData {
     public let title: String
     public let code: Int
     

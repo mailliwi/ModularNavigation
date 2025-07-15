@@ -1,6 +1,6 @@
 //
 //  BasePresenter.swift
-//  ISGInfrastructure
+//  MyInfrastructure
 
 public protocol BasePresenter: AnyObject {
     
