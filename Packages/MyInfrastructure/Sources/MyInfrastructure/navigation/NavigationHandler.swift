@@ -5,6 +5,13 @@
 import MyBase
 import UIKit
 
+/// ⚠️
+/// This class is a lightweight version of the original implementation.
+/// It does not work because this module depends on 
+/// It has been left in this project as a way to visualize/understand what the issue at hand is.
+/// The rewrite attempt is in `MainAssembler2`
+/// ⚠️
+
 @MainActor
 public class NavigationHandler {
     

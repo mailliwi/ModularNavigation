@@ -53,7 +53,7 @@ final class ThirdViewController: BaseViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .systemGreen
         
         let label = setupLabel()
         let presenterButton = setupThirdPresenterButton()
