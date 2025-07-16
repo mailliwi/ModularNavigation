@@ -2,15 +2,33 @@
 //  LoginViewController.swift
 //  Lite
 
+import MyBase
 import MyInfrastructure
 import UIKit
 
-class LoginViewController: BaseViewController {
+public final class LoginViewController: BaseViewController {
+    
+    // MARK: - Properties
+    //
+    
+    private let navigator: Navigator
+    
+    // MARK: - Initializers
+    //
+    
+    public init(navigator: Navigator) {
+        self.navigator = navigator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    public required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     //
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
@@ -58,7 +76,8 @@ class LoginViewController: BaseViewController {
     //
     
     private func setupVC1NavigationButton() -> UIButton {
-        let button = UIButton(type: .system)
+        let button = UIButton(configuration: .filled())
+        button.configuration?.baseBackgroundColor = .systemBlue
         button.setTitle("Log in", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
@@ -72,7 +91,8 @@ class LoginViewController: BaseViewController {
     }
     
     @objc private func didTapNavigateToVC1Button() {
-        // figure out what to do here
+        let someFirstVCData: FirstVCData = FirstVCData(title: "Hello there", code: 123)
+        navigator.navigate(to: .firstVC(data: someFirstVCData), presentationStyle: .push)
     }
     
 }

@@ -5,35 +5,22 @@
 import MyBase
 import UIKit
 
-public final class MainAssembler2: @unchecked Sendable {
+public final class MainAssembler2 {
     
     // MARK: - Properties
     //
     
-    public static let shared = MainAssembler2()
-    
     public var keychain: Keychain
     public var networkService: NetworkService
-    public let navigationHandler: NavigationHandler
+    public var navigator: Navigator! // should be init in the app's SceneDelegate
     
     // MARK: - Initializers
     //
     
-    private init() {
+    public init() {
         let keychain = Keychain()
         self.keychain = keychain
         self.networkService = NetworkService(keychain: keychain)
-        self.navigationHandler = NavigationHandler()
     }
-    
-}
-
-@MainActor
-extension MainAssembler2 {
-    
-    // MARK: - Navigation
-    //
-    
-    
     
 }

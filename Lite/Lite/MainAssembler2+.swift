@@ -1,0 +1,66 @@
+//
+//  MainAssembler2+.swift
+//  Plus
+
+import MyBase
+import MyInfrastructure
+import UIKit
+
+// ⚠️ Review usage of @retroactive here - see:
+// - https://www.reddit.com/r/swift/comments/1ilg39m/does_anyone_know_what_retroactive_does_here/
+// - https://forums.swift.org/t/retroactive-conformances-vs-swift-in-the-os/14393
+// - https://stackoverflow.com/questions/79280086/what-happens-when-retroactive-conformance-actually-conflict-in-swift
+
+extension MainAssembler2: @retroactive FeatureFactory {
+    
+    // MARK: - Navigation
+    //
+    
+    public func makeFeature(for route: Route) -> UIViewController {
+        switch route {
+        case .login:
+            return assembleLoginViewController()
+            
+        case .firstVC(let firstVCData):
+            return assembleFirstViewController(data: firstVCData)
+            
+        case .secondVC(let secondVCdata):
+            return assembleSecondViewController(data: secondVCdata)
+            
+        case .thirdVC(let thirdVCData):
+            return assembleThirdViewController(data: thirdVCData)
+        }
+    }
+    
+    public func assembleLoginViewController() -> UIViewController {
+        return LoginViewController(navigator: navigator)
+    }
+    
+    private func assembleFirstViewController(data: FirstVCData) -> UIViewController {
+        let dataRepository = DataRepository(keychain: keychain, networkService: networkService)
+        return FirstViewController(
+            presenter: FirstPresenter(repository: dataRepository),
+            firstVCData: data,
+            navigator: navigator
+        )
+    }
+    
+    private func assembleSecondViewController(data: SecondVCData) -> UIViewController {
+        let dataRepository = DataRepository(keychain: keychain, networkService: networkService)
+        return SecondViewController(
+            presenter: SecondPresenter(repository: dataRepository),
+            secondVCData: data,
+            navigator: navigator
+        )
+    }
+    
+    private func assembleThirdViewController(data: ThirdVCData) -> UIViewController {
+        let dataRepository = DataRepository(keychain: keychain, networkService: networkService)
+        return ThirdViewController(
+            presenter: ThirdPresenter(repository: dataRepository),
+            thirdVCData: data,
+            navigator: navigator
+        )
+    }
+    
+}

@@ -5,13 +5,11 @@
 import MyBase
 import MyInfrastructure
 
-public final class ThirdPresenter: BasePresenter {
+public final class ThirdPresenter {
     
-    public weak var view: BaseView?
     public let repository: DataRepository
     
-    public init(view: BaseView, repository: DataRepository) {
-        self.view = view
+    public init(repository: DataRepository) {
         self.repository = repository
     }
     
@@ -21,4 +19,3 @@ public final class ThirdPresenter: BasePresenter {
     }
     
 }
-

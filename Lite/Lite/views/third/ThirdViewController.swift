@@ -6,23 +6,26 @@ import MyBase
 import MyInfrastructure
 import UIKit
 
-final class ThirdViewController: BaseViewController {
+public final class ThirdViewController: BaseViewController {
     
     // MARK: - Properties
     //
     
     private let presenter: ThirdPresenter?
     private let thirdVCData: ThirdVCData?
+    private let navigator: Navigator
     
     // MARK: - Initializers
     //
     
     public init(
         presenter: ThirdPresenter?,
-        thirdVCData: ThirdVCData?
+        thirdVCData: ThirdVCData?,
+        navigator: Navigator
     ) {
         self.presenter = presenter
         self.thirdVCData = thirdVCData
+        self.navigator = navigator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -33,7 +36,7 @@ final class ThirdViewController: BaseViewController {
     // MARK: - Lifecycle
     //
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupData()
         setupUI()
@@ -96,7 +99,8 @@ final class ThirdViewController: BaseViewController {
     //
     
     private func setupThirdPresenterButton() -> UIButton {
-        let button = UIButton(type: .system)
+        let button = UIButton(configuration: .filled())
+        button.configuration?.baseBackgroundColor = .systemBlue
         button.setTitle("Execute Third Presenter Logic", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
@@ -120,7 +124,8 @@ final class ThirdViewController: BaseViewController {
     //
     
     private func setupVC1NavigationButton() -> UIButton {
-        let button = UIButton(type: .system)
+        let button = UIButton(configuration: .filled())
+        button.configuration?.baseBackgroundColor = .systemBlue
         button.setTitle("Navigate to VC1", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
@@ -134,14 +139,21 @@ final class ThirdViewController: BaseViewController {
     }
     
     @objc private func didTapNavigateToVC1Button() {
-        // figure out what to do here
+        let someFirstVCData: FirstVCData = FirstVCData(title: "Hello there", code: 123)
+        dismiss(animated: true) {
+            self.navigator.navigate(
+                to: .firstVC(data: someFirstVCData),
+                presentationStyle: .present(modal: true)
+            )
+        }
     }
     
     // MARK: - Navigate to VC2 Button
     //
     
     private func setupVC2NavigationButton() -> UIButton {
-        let button = UIButton(type: .system)
+        let button = UIButton(configuration: .filled())
+        button.configuration?.baseBackgroundColor = .systemBlue
         button.setTitle("Navigate to VC2", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
@@ -155,7 +167,13 @@ final class ThirdViewController: BaseViewController {
     }
     
     @objc private func didTapNavigateToVC2Button() {
-        // figure out what to do here
+        let someSecondVCData: SecondVCData = SecondVCData(title: "Hello there", code: 123)
+        dismiss(animated: true) {
+            self.navigator.navigate(
+                to: .secondVC(data: someSecondVCData),
+                presentationStyle: .present(modal: false)
+            )
+        }
     }
     
 }

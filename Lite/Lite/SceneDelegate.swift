@@ -2,6 +2,7 @@
 //  SceneDelegate.swift
 //  Lite
 
+import MyInfrastructure
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -14,7 +15,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = LoginViewController(nibName: nil, bundle: nil)
+        
+        let rootNavigationController: UINavigationController = UINavigationController()
+        let mainAssembler: MainAssembler2 = MainAssembler2()
+        
+        let navigator: DefaultNavigator = DefaultNavigator(
+            navigationController: rootNavigationController,
+            featureFactory: mainAssembler
+        )
+        mainAssembler.navigator = navigator
+        
+        let rootViewController: UIViewController = mainAssembler.assembleLoginViewController()
+        rootNavigationController.viewControllers = [rootViewController]
+        window?.rootViewController = rootNavigationController
         window?.makeKeyAndVisible()
     }
 

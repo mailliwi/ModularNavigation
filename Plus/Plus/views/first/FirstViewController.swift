@@ -6,23 +6,26 @@ import MyBase
 import MyInfrastructure
 import UIKit
 
-final class FirstViewController: BaseViewController {
+public final class FirstViewController: BaseViewController {
     
     // MARK: - Properties
     //
     
     private let presenter: FirstPresenter?
     private let firstVCData: FirstVCData?
+    private let navigator: Navigator
     
     // MARK: - Initializers
     //
     
     public init(
         presenter: FirstPresenter?,
-        firstVCData: FirstVCData?
+        firstVCData: FirstVCData?,
+        navigator: Navigator
     ) {
         self.presenter = presenter
         self.firstVCData = firstVCData
+        self.navigator = navigator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -33,7 +36,7 @@ final class FirstViewController: BaseViewController {
     // MARK: - Lifecycle
     //
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupData()
         setupUI()
@@ -53,7 +56,7 @@ final class FirstViewController: BaseViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .systemGray6
         
         let label = setupLabel()
         let presenterButton = setupPresenterButton()
@@ -86,7 +89,7 @@ final class FirstViewController: BaseViewController {
     private func setupLabel() -> UILabel {
         let label = UILabel()
         label.text = "First View Controller"
-        label.textColor = .white
+        label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         
         return label
@@ -96,7 +99,8 @@ final class FirstViewController: BaseViewController {
     //
     
     private func setupPresenterButton() -> UIButton {
-        let button = UIButton(type: .system)
+        let button = UIButton(configuration: .filled())
+        button.configuration?.baseBackgroundColor = .systemBlue
         button.setTitle("Execute First Presenter Logic", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
@@ -120,7 +124,8 @@ final class FirstViewController: BaseViewController {
     //
     
     private func setupVC2NavigationButton() -> UIButton {
-        let button = UIButton(type: .system)
+        let button = UIButton(configuration: .filled())
+        button.configuration?.baseBackgroundColor = .systemBlue
         button.setTitle("Navigate to VC2", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
@@ -134,14 +139,16 @@ final class FirstViewController: BaseViewController {
     }
     
     @objc private func didTapNavigateToVC2Button() {
-        // figure out what to do here
+        let someSecondVCData: SecondVCData = SecondVCData(title: "Hello there", code: 123)
+        navigator.navigate(to: .secondVC(data: someSecondVCData), presentationStyle: .push)
     }
     
     // MARK: - Navigate to VC3 Button
     //
     
     private func setupVC3NavigationButton() -> UIButton {
-        let button = UIButton(type: .system)
+        let button = UIButton(configuration: .filled())
+        button.configuration?.baseBackgroundColor = .systemBlue
         button.setTitle("Navigate to VC3", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
@@ -155,7 +162,8 @@ final class FirstViewController: BaseViewController {
     }
     
     @objc private func didTapNavigateToVC3Button() {
-        // figure out what to do here
+        let someThirdVCData: ThirdVCData = ThirdVCData(title: "Hello there", code: 123)
+        navigator.navigate(to: .thirdVC(data: someThirdVCData), presentationStyle: .present(modal: true))
     }
     
 }
