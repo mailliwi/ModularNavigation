@@ -2,6 +2,7 @@
 //  SceneDelegate.swift
 //  Lite
 
+import LoginFeature
 import MyInfrastructure
 import UIKit
 

@@ -1,6 +1,6 @@
 //
 //  FirstPresenter.swift
-//  Lite
+//  FirstFeature
 
 import MyBase
 import MyInfrastructure

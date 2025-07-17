@@ -1,6 +1,6 @@
 //
 //  LoginViewController.swift
-//  Lite
+//  LoginFeature
 
 import MyBase
 import MyInfrastructure

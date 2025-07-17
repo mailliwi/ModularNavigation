@@ -1,7 +1,9 @@
 //
-//  MainAssembler2+.swift
+//  MainAssembler2+App.swift
 //  Plus
 
+import FirstFeature
+import LoginFeature
 import MyBase
 import MyInfrastructure
 import UIKit
@@ -11,6 +13,8 @@ import UIKit
 // - https://forums.swift.org/t/retroactive-conformances-vs-swift-in-the-os/14393
 // - https://stackoverflow.com/questions/79280086/what-happens-when-retroactive-conformance-actually-conflict-in-swift
 
+/// This extension on MainAssembler2 will have to exist once per Project tier.
+/// Meaning this is the only place where changes will have to be backported, unless a better solution is found.
 extension MainAssembler2: @retroactive FeatureFactory {
     
     // MARK: - Navigation
@@ -30,19 +34,6 @@ extension MainAssembler2: @retroactive FeatureFactory {
         case .thirdVC(let thirdVCData):
             return assembleThirdViewController(data: thirdVCData)
         }
-    }
-    
-    public func assembleLoginViewController() -> UIViewController {
-        return LoginViewController(navigator: navigator)
-    }
-    
-    private func assembleFirstViewController(data: FirstVCData) -> UIViewController {
-        let dataRepository = DataRepository(keychain: keychain, networkService: networkService)
-        return FirstViewController(
-            presenter: FirstPresenter(repository: dataRepository),
-            firstVCData: data,
-            navigator: navigator
-        )
     }
     
     private func assembleSecondViewController(data: SecondVCData) -> UIViewController {

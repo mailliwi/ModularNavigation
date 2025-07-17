@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5F1B21342E2002F400E749FD /* MyBase in Frameworks */ = {isa = PBXBuildFile; productRef = 5F1B21332E2002F400E749FD /* MyBase */; };
 		5F1B21362E2002F400E749FD /* MyInfrastructure in Frameworks */ = {isa = PBXBuildFile; productRef = 5F1B21352E2002F400E749FD /* MyInfrastructure */; };
+		5F1EBD1C2E293E77009201EA /* LoginFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 5F1EBD1B2E293E77009201EA /* LoginFeature */; };
+		5FBCD3552E294518008833A0 /* FirstFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 5FBCD3542E294518008833A0 /* FirstFeature */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FBCD3552E294518008833A0 /* FirstFeature in Frameworks */,
+				5F1EBD1C2E293E77009201EA /* LoginFeature in Frameworks */,
 				5F1B21342E2002F400E749FD /* MyBase in Frameworks */,
 				5F1B21362E2002F400E749FD /* MyInfrastructure in Frameworks */,
 			);
@@ -95,6 +99,8 @@
 			packageProductDependencies = (
 				5F1B21332E2002F400E749FD /* MyBase */,
 				5F1B21352E2002F400E749FD /* MyInfrastructure */,
+				5F1EBD1B2E293E77009201EA /* LoginFeature */,
+				5FBCD3542E294518008833A0 /* FirstFeature */,
 			);
 			productName = Lite;
 			productReference = 5F1B206A2E1FFDB900E749FD /* Lite.app */;
@@ -369,6 +375,14 @@
 		5F1B21352E2002F400E749FD /* MyInfrastructure */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MyInfrastructure;
+		};
+		5F1EBD1B2E293E77009201EA /* LoginFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LoginFeature;
+		};
+		5FBCD3542E294518008833A0 /* FirstFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirstFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

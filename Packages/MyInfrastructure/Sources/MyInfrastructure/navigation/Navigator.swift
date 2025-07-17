@@ -19,6 +19,7 @@ public protocol Navigator {
 // MARK: - Feature Factory
 //
 
+@MainActor
 public protocol FeatureFactory {
     func makeFeature(for route: Route) -> UIViewController
 }
