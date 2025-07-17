@@ -140,12 +140,7 @@ public final class ThirdViewController: BaseViewController {
     
     @objc private func didTapNavigateToVC1Button() {
         let someFirstVCData: FirstVCData = FirstVCData(title: "Hello there", code: 123)
-        dismiss(animated: true) {
-            self.navigator.navigate(
-                to: .firstVC(data: someFirstVCData),
-                presentationStyle: .present(modal: true)
-            )
-        }
+        navigator.navigate(to: .firstVC(data: someFirstVCData), presentationStyle: .present())
     }
     
     // MARK: - Navigate to VC2 Button
@@ -168,12 +163,7 @@ public final class ThirdViewController: BaseViewController {
     
     @objc private func didTapNavigateToVC2Button() {
         let someSecondVCData: SecondVCData = SecondVCData(title: "Hello there", code: 123)
-        dismiss(animated: true) {
-            self.navigator.navigate(
-                to: .secondVC(data: someSecondVCData),
-                presentationStyle: .present(modal: false)
-            )
-        }
+        navigator.navigate(to: .secondVC(data: someSecondVCData), presentationStyle: .present(overFullScreen: true))
     }
     
 }

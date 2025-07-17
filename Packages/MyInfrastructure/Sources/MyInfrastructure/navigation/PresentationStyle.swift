@@ -7,7 +7,7 @@ import Foundation
 /// The presentation style used when navigating to a new view.
 public enum PresentationStyle {
     
-    case push
-    case present(modal: Bool)
+    case push(hideBackButton: Bool = false)
+    case present(overFullScreen: Bool = false)
     
 }

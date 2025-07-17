@@ -40,7 +40,7 @@ public final class LoginViewController: BaseViewController {
         view.backgroundColor = .systemYellow
         
         let label = setupLabel()
-        let vc1NavigationButton = setupVC1NavigationButton()
+        let vc1NavigationButton = setupLoginButton()
         
         let stackView = UIStackView(
             arrangedSubviews: [
@@ -75,7 +75,7 @@ public final class LoginViewController: BaseViewController {
     // MARK: - Navigate to VC1 Button
     //
     
-    private func setupVC1NavigationButton() -> UIButton {
+    private func setupLoginButton() -> UIButton {
         let button = UIButton(configuration: .filled())
         button.configuration?.baseBackgroundColor = .systemBlue
         button.setTitle("Log in", for: .normal)
@@ -83,16 +83,16 @@ public final class LoginViewController: BaseViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         button.addTarget(
             self,
-            action: #selector(didTapNavigateToVC1Button),
+            action: #selector(didTapLoginButton),
             for: .touchUpInside
         )
         
         return button
     }
     
-    @objc private func didTapNavigateToVC1Button() {
+    @objc private func didTapLoginButton() {
         let someFirstVCData: FirstVCData = FirstVCData(title: "Hello there", code: 123)
-        navigator.navigate(to: .firstVC(data: someFirstVCData), presentationStyle: .push)
+        navigator.navigate(to: .firstVC(data: someFirstVCData), presentationStyle: .push(hideBackButton: true))
     }
     
 }

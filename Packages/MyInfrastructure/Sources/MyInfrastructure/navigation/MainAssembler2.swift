@@ -5,10 +5,12 @@
 import MyBase
 import UIKit
 
-public final class MainAssembler2 {
+public final class MainAssembler2: @unchecked Sendable {
     
     // MARK: - Properties
     //
+    
+    public static let shared: MainAssembler2 = MainAssembler2()
     
     public var keychain: Keychain
     public var networkService: NetworkService
@@ -17,7 +19,7 @@ public final class MainAssembler2 {
     // MARK: - Initializers
     //
     
-    public init() {
+    private init() {
         let keychain = Keychain()
         self.keychain = keychain
         self.networkService = NetworkService(keychain: keychain)

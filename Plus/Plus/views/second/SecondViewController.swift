@@ -140,7 +140,7 @@ public final class SecondViewController: BaseViewController {
     
     @objc private func didTapNavigateToVC1Button() {
         let someFirstVCData: FirstVCData = FirstVCData(title: "Hello there", code: 123)
-        navigator.navigate(to: .firstVC(data: someFirstVCData), presentationStyle: .push)
+        self.navigator.navigate(to: .firstVC(data: someFirstVCData), presentationStyle: .push())
     }
     
     // MARK: - Navigate to VC3 Button
@@ -163,7 +163,7 @@ public final class SecondViewController: BaseViewController {
     
     @objc private func didTapNavigateToVC3Button() {
         let someThirdVCData: ThirdVCData = ThirdVCData(title: "Hello there", code: 123)
-        navigator.navigate(to: .thirdVC(data: someThirdVCData), presentationStyle: .present(modal: true))
+        self.navigator.navigate(to: .thirdVC(data: someThirdVCData), presentationStyle: .present())
     }
     
 }

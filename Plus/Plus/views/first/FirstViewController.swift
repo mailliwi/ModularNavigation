@@ -62,13 +62,15 @@ public final class FirstViewController: BaseViewController {
         let presenterButton = setupPresenterButton()
         let vc2NavigationButton = setupVC2NavigationButton()
         let vc3NavigationButton = setupVC3NavigationButton()
+        let logOutButton = setupLogOutButton()
         
         let stackView = UIStackView(
             arrangedSubviews: [
                 label,
                 presenterButton,
                 vc2NavigationButton,
-                vc3NavigationButton
+                vc3NavigationButton,
+                logOutButton
             ]
         )
         stackView.axis = .vertical
@@ -140,7 +142,7 @@ public final class FirstViewController: BaseViewController {
     
     @objc private func didTapNavigateToVC2Button() {
         let someSecondVCData: SecondVCData = SecondVCData(title: "Hello there", code: 123)
-        navigator.navigate(to: .secondVC(data: someSecondVCData), presentationStyle: .push)
+        navigator.navigate(to: .secondVC(data: someSecondVCData), presentationStyle: .push())
     }
     
     // MARK: - Navigate to VC3 Button
@@ -163,7 +165,29 @@ public final class FirstViewController: BaseViewController {
     
     @objc private func didTapNavigateToVC3Button() {
         let someThirdVCData: ThirdVCData = ThirdVCData(title: "Hello there", code: 123)
-        navigator.navigate(to: .thirdVC(data: someThirdVCData), presentationStyle: .present(modal: true))
+        navigator.navigate(to: .thirdVC(data: someThirdVCData), presentationStyle: .present())
+    }
+    
+    // MARK: - Log Out Button
+    //
+    
+    private func setupLogOutButton() -> UIButton {
+        let button = UIButton(configuration: .bordered())
+        button.configuration?.baseBackgroundColor = .systemBlue
+        button.setTitle("Log out", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        button.addTarget(
+            self,
+            action: #selector(didTapLogOutButton),
+            for: .touchUpInside
+        )
+        
+        return button
+    }
+    
+    @objc private func didTapLogOutButton() {
+        navigator.popToRoot()
     }
     
 }

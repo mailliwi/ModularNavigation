@@ -7,11 +7,13 @@ import UIKit
 // MARK: - Navigator
 //
 
+@MainActor
 public protocol Navigator {
     var rootNavigationController: UINavigationController? { get set }
     
     @MainActor
     func navigate(to route: Route, presentationStyle: PresentationStyle)
+    func popToRoot()
 }
 
 // MARK: - Feature Factory
@@ -50,14 +52,46 @@ public final class DefaultNavigator: Navigator {
         let viewController = featureFactory.makeFeature(for: route)
         
         switch presentationStyle {
-        case .push:
+        case .push(let hideBackButton):
+            if hideBackButton { viewController.navigationItem.hidesBackButton = true }
             rootNavigationController?.pushViewController(viewController, animated: true)
             
-        case .present(let modal):
-            viewController.modalPresentationStyle = modal ? .automatic : .overFullScreen
+        case .present(let overFullScreen):
+            if overFullScreen { viewController.modalPresentationStyle = .overFullScreen }
             rootNavigationController?.present(viewController, animated: true)
         }
+        
+        printViewControllers()
+    }
+    
+    public func popToRoot() {
+        guard let navigationController = rootNavigationController else { return }
+        guard let rootViewController = rootNavigationController?.viewControllers.first,
+              let topViewController = topViewController()
+        else {
+            return
+        }
+        
+        topViewController.dismiss(animated: true) {
+            navigationController.popToViewController(rootViewController, animated: true)
+        }
+        
+        printViewControllers()
+    }
+    
+    private func topViewController() -> UIViewController? {
+        guard let keyWindow = UIApplication.shared.keyWindow,
+              let rootViewController = keyWindow.rootViewController
+        else {
+            return nil
+        }
+        
+        return UIApplication.topViewController(from: rootViewController)
+    }
+    
+    private func printViewControllers() {
+        print("📑 Array of VCs:")
+        print(rootNavigationController?.viewControllers ?? [])
     }
     
 }
-
