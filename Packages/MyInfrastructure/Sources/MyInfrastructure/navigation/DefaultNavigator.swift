@@ -39,14 +39,15 @@ public final class DefaultNavigator: Navigator {
             rootNavigationController?.present(viewController, animated: true)
         }
         
-        printViewControllers()
+        printViewControllersArray()
     }
     
     public func popToRoot() {
-        guard let navigationController = rootNavigationController else { return }
-        guard let rootViewController = rootNavigationController?.viewControllers.first,
-              let topViewController = topViewController()
+        guard let navigationController = rootNavigationController,
+              let rootViewController = rootNavigationController?.viewControllers.first,
+              let topViewController = UIApplication.topViewController() // Ensures we get the top most VC, even if it is a modal.
         else {
+            // Show an alert or some kind of error if can't proceed with popping.
             return
         }
         
@@ -54,23 +55,12 @@ public final class DefaultNavigator: Navigator {
             navigationController.popToViewController(rootViewController, animated: true)
         }
         
-        printViewControllers()
+        printViewControllersArray()
     }
     
-    private func topViewController() -> UIViewController? {
-        guard let keyWindow = UIApplication.shared.keyWindow,
-              let rootViewController = keyWindow.rootViewController
-        else {
-            return nil
-        }
-        
-        return UIApplication.topViewController(from: rootViewController)
-    }
-    
-    private func printViewControllers() {
+    private func printViewControllersArray() {
         print("📑 Array of VCs:")
         print(rootNavigationController?.viewControllers ?? [])
     }
     
 }
-

@@ -5,16 +5,19 @@
 import MyBase
 import UIKit
 
-public final class MainAssembler2: @unchecked Sendable {
+public final class MainAssembler2 {
     
     // MARK: - Properties
     //
     
-    public static let shared: MainAssembler2 = MainAssembler2()
+    public nonisolated(unsafe) static let shared: MainAssembler2 = MainAssembler2()
     
     public var keychain: Keychain
     public var networkService: NetworkService
-    public var navigator: Navigator! // should be init in the app's SceneDelegate
+    
+    // Should be init in the app's SceneDelegate
+    // Review if force unwrapping has a better alternative
+    public var navigator: Navigator!
     
     // MARK: - Initializers
     //

@@ -62,13 +62,15 @@ public final class ThirdViewController: BaseViewController {
         let presenterButton = setupThirdPresenterButton()
         let vc1NavigationButton = setupVC1NavigationButton()
         let vc2NavigationButton = setupVC2NavigationButton()
+        let logOutButton = setupLogOutButton()
         
         let stackView = UIStackView(
             arrangedSubviews: [
                 label,
                 presenterButton,
                 vc1NavigationButton,
-                vc2NavigationButton
+                vc2NavigationButton,
+                logOutButton
             ]
         )
         stackView.axis = .vertical
@@ -164,6 +166,28 @@ public final class ThirdViewController: BaseViewController {
     @objc private func didTapNavigateToVC2Button() {
         let someSecondVCData: SecondVCData = SecondVCData(title: "Hello there", code: 123)
         navigator.navigate(to: .secondVC(data: someSecondVCData), presentationStyle: .present(overFullScreen: true))
+    }
+    
+    // MARK: - Log Out Button
+    //
+    
+    private func setupLogOutButton() -> UIButton {
+        let button = UIButton(configuration: .bordered())
+        button.configuration?.baseBackgroundColor = .systemBlue
+        button.setTitle("Log out", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        button.addTarget(
+            self,
+            action: #selector(didTapLogOutButton),
+            for: .touchUpInside
+        )
+        
+        return button
+    }
+    
+    @objc private func didTapLogOutButton() {
+        navigator.popToRoot()
     }
     
 }
