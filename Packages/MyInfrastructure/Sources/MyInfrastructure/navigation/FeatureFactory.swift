@@ -7,6 +7,6 @@ import UIKit
 @MainActor
 public protocol FeatureFactory {
     
-    func makeFeature(for route: Route) -> UIViewController
+    func makeViewController(for route: Route) -> UIViewController
     
 }

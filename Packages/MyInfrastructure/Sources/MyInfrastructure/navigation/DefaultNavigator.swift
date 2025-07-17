@@ -27,7 +27,7 @@ public final class DefaultNavigator: Navigator {
     //
     
     public func navigate(to route: Route, presentationStyle: PresentationStyle) {
-        let viewController = featureFactory.makeFeature(for: route)
+        let viewController = featureFactory.makeViewController(for: route)
         
         switch presentationStyle {
         case .push(let hideBackButton):

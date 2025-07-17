@@ -22,7 +22,7 @@ extension MainAssembler2: @retroactive FeatureFactory {
     // MARK: - Navigation
     //
     
-    public func makeFeature(for route: Route) -> UIViewController {
+    public func makeViewController(for route: Route) -> UIViewController {
         switch route {
         case .login:
             return assembleLoginViewController()
