@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "container:Packages/SecondFeature">
+   </FileRef>
+   <FileRef
+      location = "container:Packages/ThirdFeature">
+   </FileRef>
+   <FileRef
       location = "container:Packages/FirstFeature">
    </FileRef>
    <FileRef

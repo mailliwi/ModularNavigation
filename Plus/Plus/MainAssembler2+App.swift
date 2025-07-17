@@ -6,6 +6,8 @@ import FirstFeature
 import LoginFeature
 import MyBase
 import MyInfrastructure
+import SecondFeature
+import ThirdFeature
 import UIKit
 
 // ⚠️ Review usage of @retroactive here - see:
@@ -34,24 +36,6 @@ extension MainAssembler2: @retroactive FeatureFactory {
         case .thirdVC(let thirdVCData):
             return assembleThirdViewController(data: thirdVCData)
         }
-    }
-    
-    private func assembleSecondViewController(data: SecondVCData) -> UIViewController {
-        let dataRepository = DataRepository(keychain: keychain, networkService: networkService)
-        return SecondViewController(
-            presenter: SecondPresenter(repository: dataRepository),
-            secondVCData: data,
-            navigator: navigator
-        )
-    }
-    
-    private func assembleThirdViewController(data: ThirdVCData) -> UIViewController {
-        let dataRepository = DataRepository(keychain: keychain, networkService: networkService)
-        return ThirdViewController(
-            presenter: ThirdPresenter(repository: dataRepository),
-            thirdVCData: data,
-            navigator: navigator
-        )
     }
     
 }

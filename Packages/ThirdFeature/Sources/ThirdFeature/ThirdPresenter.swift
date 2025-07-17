@@ -1,6 +1,6 @@
 //
 //  ThirdPresenter.swift
-//  Lite
+//  ThirdFeature
 
 import MyBase
 import MyInfrastructure

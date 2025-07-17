@@ -1,6 +1,6 @@
 //
 //  ThirdViewController.swift
-//  Lite
+//  ThirdFeature
 
 import MyBase
 import MyInfrastructure

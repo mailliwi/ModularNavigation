@@ -10,6 +10,8 @@
 		5F1B21342E2002F400E749FD /* MyBase in Frameworks */ = {isa = PBXBuildFile; productRef = 5F1B21332E2002F400E749FD /* MyBase */; };
 		5F1B21362E2002F400E749FD /* MyInfrastructure in Frameworks */ = {isa = PBXBuildFile; productRef = 5F1B21352E2002F400E749FD /* MyInfrastructure */; };
 		5F1EBD1C2E293E77009201EA /* LoginFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 5F1EBD1B2E293E77009201EA /* LoginFeature */; };
+		5F7FE3132E294A6800DCF0BE /* SecondFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 5F7FE3122E294A6800DCF0BE /* SecondFeature */; };
+		5FBB57C82E29463D00016CC8 /* ThirdFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 5FBB57C72E29463D00016CC8 /* ThirdFeature */; };
 		5FBCD3552E294518008833A0 /* FirstFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 5FBCD3542E294518008833A0 /* FirstFeature */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +48,9 @@
 				5FBCD3552E294518008833A0 /* FirstFeature in Frameworks */,
 				5F1EBD1C2E293E77009201EA /* LoginFeature in Frameworks */,
 				5F1B21342E2002F400E749FD /* MyBase in Frameworks */,
+				5F7FE3132E294A6800DCF0BE /* SecondFeature in Frameworks */,
 				5F1B21362E2002F400E749FD /* MyInfrastructure in Frameworks */,
+				5FBB57C82E29463D00016CC8 /* ThirdFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +105,8 @@
 				5F1B21352E2002F400E749FD /* MyInfrastructure */,
 				5F1EBD1B2E293E77009201EA /* LoginFeature */,
 				5FBCD3542E294518008833A0 /* FirstFeature */,
+				5FBB57C72E29463D00016CC8 /* ThirdFeature */,
+				5F7FE3122E294A6800DCF0BE /* SecondFeature */,
 			);
 			productName = Lite;
 			productReference = 5F1B206A2E1FFDB900E749FD /* Lite.app */;
@@ -379,6 +385,14 @@
 		5F1EBD1B2E293E77009201EA /* LoginFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = LoginFeature;
+		};
+		5F7FE3122E294A6800DCF0BE /* SecondFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SecondFeature;
+		};
+		5FBB57C72E29463D00016CC8 /* ThirdFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ThirdFeature;
 		};
 		5FBCD3542E294518008833A0 /* FirstFeature */ = {
 			isa = XCSwiftPackageProductDependency;
