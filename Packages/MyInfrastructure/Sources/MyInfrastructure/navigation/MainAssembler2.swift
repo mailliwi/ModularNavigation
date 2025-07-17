@@ -5,12 +5,13 @@
 import MyBase
 import UIKit
 
+@MainActor
 public final class MainAssembler2 {
     
     // MARK: - Properties
     //
     
-    public nonisolated(unsafe) static let shared: MainAssembler2 = MainAssembler2()
+    public static let shared: MainAssembler2 = MainAssembler2()
     
     public var keychain: Keychain
     public var networkService: NetworkService

@@ -5,7 +5,6 @@
 import MyInfrastructure
 import UIKit
 
-@MainActor
 extension MainAssembler2 {
     
     public func assembleLoginViewController() -> UIViewController {

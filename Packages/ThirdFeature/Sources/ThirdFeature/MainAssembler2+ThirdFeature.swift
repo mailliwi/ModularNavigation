@@ -6,7 +6,6 @@ import MyBase
 import MyInfrastructure
 import UIKit
 
-@MainActor
 extension MainAssembler2 {
     
     public func assembleThirdViewController(data: ThirdVCData) -> UIViewController {

@@ -15,7 +15,7 @@ import UIKit
 // - https://forums.swift.org/t/retroactive-conformances-vs-swift-in-the-os/14393
 // - https://stackoverflow.com/questions/79280086/what-happens-when-retroactive-conformance-actually-conflict-in-swift
 
-/// This extension on MainAssembler2 will have to exist once per Project tier.
+/// This extension on MainAssembler2 currently exists once per Project tier.
 /// Meaning this is the only place where changes will have to be backported, unless a better solution is found.
 extension MainAssembler2: @retroactive FeatureFactory {
     
