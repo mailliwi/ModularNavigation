@@ -187,7 +187,7 @@ public final class FirstViewController: BaseViewController {
     }
     
     @objc private func didTapLogOutButton() {
-        navigator.popToRoot()
+        navigator.popToRootViewController()
     }
     
 }

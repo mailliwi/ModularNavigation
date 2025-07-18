@@ -19,7 +19,7 @@ public protocol Navigator {
     func navigate(to route: Route, presentationStyle: PresentationStyle)
     
     /// Pops all view controllers on the navigation stack, returning to the root.
-    func popToRoot()
+    func popToRootViewController()
     
     // TODO: Implementing the following would be beneficial for the SubMenu navigation case
     /// Pops view controllers until the first instance of the given class

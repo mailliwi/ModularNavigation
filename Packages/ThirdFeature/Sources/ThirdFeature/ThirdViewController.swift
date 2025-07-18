@@ -187,7 +187,7 @@ public final class ThirdViewController: BaseViewController {
     }
     
     @objc private func didTapLogOutButton() {
-        navigator.popToRoot()
+        navigator.popToRootViewController()
     }
     
 }

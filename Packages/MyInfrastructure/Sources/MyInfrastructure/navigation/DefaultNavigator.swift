@@ -42,7 +42,7 @@ public final class DefaultNavigator: Navigator {
         printViewControllersArray()
     }
     
-    public func popToRoot() {
+    public func popToRootViewController() {
         guard let navigationController = rootNavigationController,
               let rootViewController = rootNavigationController?.viewControllers.first,
               let topViewController = UIApplication.topViewController() // Ensures we get the top most VC, even if it is a modal.
